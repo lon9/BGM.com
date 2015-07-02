@@ -1,0 +1,19 @@
+{
+  "name": "BGM.com",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "http-server": "^0.8.0",
+    "bower": "1.4.1", 
+    "express": "4.13.0"
+  },
+  "engine": {
+    "node": "0.12.4",
+    "npm": "2.10.1"
+  },
+  "script": {
+    "postinstall": "bower install",
+    "prestart": "npm install",
+    "start": "node web.js",
+  }
+}

@@ -1,0 +1,63 @@
+<h4>ジャンル別ランキング</h4>
+
+<div class="alert alert-warning alert-dismissable" ng-show="loadError">
+  <button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  エラー: {{errorTitle}}の再生に失敗しました。次の曲に移行します。
+</div>
+<div class="row">
+  <div class="dropdown col-sm-3 col-xs-12">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{genreName}}</button> 
+    <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdowmMenu1">
+      <li role="presentation" ng-repeat="genre in genres" ng-click="selectGenre(genre.id, genre.name, country)"><a ui-sref=".detail({genreName: genre.name})">{{genre.name}}</a></li>
+    </ul>
+  </div>
+  <form class="col-sm-5 col-xs-12">
+    <div class="form-group" ng-init="country='jp'">
+      <label for="jp">
+        <input type="radio" name="jp" ng-model="country" ng-change="selectCountry(country)" value="jp"/>日本
+      </label>
+      <label for="us">
+        <input type="radio" name="us" ng-model="country" ng-change="selectCountry(country)" value="us"/>US
+      </label>
+      <label>
+        <input type="radio" name="uk" ng-model="country" ng-change="selectCountry(country)" value="gb"/>UK
+      </label>
+    </div>
+  </form>
+  <button type="button" ng-show="showShuffle" ng-click="shuffle()" class="col-sm-3 col-xs-12 pull-right btn btn-default dn-fade" >Shuffle</button>
+</div>
+
+<div ng-show="showVideoDiv" class="dn-fade">
+  <div class="row">
+    <div class="col-sm-8 col-xs-12">
+      <p>再生中: {{playingTitle}}</p>
+      <p>アーティスト: {{artistName}}</p>
+    </div>
+    <div class="col-sm-4 col-xs-12" id="watch-video">
+      <button type="button" ng-click="videoToggle()" class="pull-right btn btn-info">Watch video</button>
+    </div>
+  </div>
+  <div class="embed-responsive embed-responsive-16by9 video-wrapper dn-bounce" ng-show="showVideo">
+    <youtube-video class="embed-responsive-item" video_id="videoId" player="embedPlayer" player-vars="playerVars"></youtube-video>
+  </div>
+  <div class="row center-block" id="playAndPause">
+    <button type="button" ng-disabled="prevDisabled" ng-click="prevVideo()" class="col-sm-3 col-xs-12 btn btn-default">Prev</button>
+    <button type="button" ng-disabled="playDisabled" ng-click="embedPlayer.playVideo()" class="col-sm-3 col-xs-12 btn btn-primary">Play</button>
+    <button type="button" ng-disabled="pauseDisabled" ng-click="embedPlayer.pauseVideo()" class="col-sm-3 col-xs-12 btn btn-default">Pause</button>
+    <button type="button" ng-disabled="nextDisabled" ng-click="nextVideo()" class="col-sm-3 col-xs-12 btn btn-default">Next</button>
+  </div>
+</div>
+
+<div class="list-group dn-fade-up" ng-repeat="music in musics">
+  <a ng-class="{active: isActive($index)}" ui-sref=".play" ng-click="playVideo(music.title, music.artist, $index)"class="list-group-item searched-list">
+    <div class="row">
+      <img class="img-responsive img-thumbnail col-sm-3 col-xs-12" ng-src="{{music.thumbnail}}">
+      <div class="col-sm-3 col-xs-12">
+        <p>{{music.title}}</p>
+        <p>{{music.artist}}</p>
+        <p>{{music.publishedAt}}</p>
+      </div>
+      <button type="button" ng-click="addStar(music.title, music.artist); $event.stopPropagation();" class="col-sm-1 btn btn-default pull-right right-button"><span class="fa fa-star-o" id="option-button"></span></button>
+    </div>
+  </a>
+</div>

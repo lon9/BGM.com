@@ -1,0 +1,170 @@
+[
+  {
+    "name": "all",
+    "id": "all"
+  },
+  {
+    "name": "Alternative",
+    "id": 20
+  },
+  {
+    "name": "Anime",
+    "id": 29
+  },
+  {
+    "name": "Blues",
+    "id": 2
+  },
+  {
+    "name": "Brazirian",
+    "id": 1122
+  },
+  {
+    "name": "Childrens Music",
+    "id": 4
+  },
+  {
+    "name": "Chinese",
+    "id": 1232
+  },
+  {
+    "name": "Christian & Gospel",
+    "id": 22
+  },
+  {
+    "name": "Classical",
+    "id": 5
+  },
+  {
+    "name": "Comedy",
+    "id": 3
+  },
+  {
+    "name": "Country",
+    "id": 6
+  },
+  {
+    "name": "Dance",
+    "id": 17
+  },
+  {
+    "name": "Disney",
+    "id": 50000063
+  },
+  {
+    "name": "Easy Listening",
+    "id": 25
+  },
+  {
+    "name": "Electronic",
+    "id": 7
+  },
+  {
+    "name": "Enka",
+    "id": 28
+  },
+  {
+    "name": "Fitness & Workout",
+    "id": 50
+  },
+  {
+    "name": "French Pop",
+    "id": 50000064
+  },
+  {
+    "name": "German Fork",
+    "id": 50000068
+  },
+  {
+    "name": "German Pop",
+    "id": 50000066
+  },
+  {
+    "name": "Hip-Hop/Rap",
+    "id": 18
+  },
+  {
+    "name": "Holiday",
+    "id": 8
+  },
+  {
+    "name": "Indian",
+    "id": 1262
+  },
+  {
+    "name": "Instrumental",
+    "id": 53
+  },
+  {
+    "name": "J-Pop",
+    "id": 27
+  },
+  {
+    "name": "Jazz",
+    "id": 11
+  },
+  {
+    "name": "K-Pop",
+    "id": 51
+  },
+  {
+    "name": "Karaoke",
+    "id": 52
+  },
+  {
+    "name": "KayoKyoku",
+    "id": 30
+  },
+  {
+    "name": "korean",
+    "id": 1243
+  },
+  {
+    "name": "Latino",
+    "id": 12
+  },
+  {
+    "name": "New Age",
+    "id": 13
+  },
+  {
+    "name": "Opera",
+    "id": 9
+  },
+  {
+    "name": "Pop",
+    "id": 14
+  },
+  {
+    "name": "R&B/Soul",
+    "id": 15
+  },
+  {
+    "name": "Reggae",
+    "id": 24
+  },
+  {
+    "name": "Rock",
+    "id": 21
+  },
+  {
+    "name": "Singer/Songwriter",
+    "id": 10
+  },
+  {
+    "name": "Soundtrack",
+    "id": 16
+  },
+  {
+    "name": "Spoken Word",
+    "id": 50000061
+  },
+  {
+    "name": "Vocal",
+    "id": 23
+  },
+  {
+    "name": "World",
+    "id": 19
+  }
+]

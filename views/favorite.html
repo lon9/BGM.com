@@ -1,0 +1,39 @@
+<div class="row">
+  <h4 class="col-sm-9 col-xs-12">お気に入り</h4>
+  <div class="col-sm-3 col-xs-12">
+    <button type="button" ng-click="shuffle()" class="pull-right btn btn-default">Shuffle</button>
+  </div>
+</div>
+
+<h5 ng-hide="empty">お気に入りが存在しません。</h5>
+
+<div ng-show="showVideoDiv" class="dn-fade">
+  <div class="row">
+    <p class="col-sm-8 col-xs-12">再生中: {{playingTitle}}</p>
+    <div class="col-sm-4 col-xs-12" id="watch-video">
+      <button type="button" ng-click="videoToggle()" class="pull-right btn btn-info">Watch video</button>
+    </div>
+  </div>
+  <div class="embed-responsive embed-responsive-16by9 video-wrapper dn-bounce" ng-show="showVideo">
+    <youtube-video class="embed-responsive-item" video_id="videoId" player="embedPlayer" player-vars="playerVars"><youtube-video>
+  </div>
+  <div class="row center-block" id="playAndPause">
+    <button type="button" ng-disabled="prevDisabled" ng-click="prevVideo()" class="col-sm-3 col-xs-12 btn btn-default">Prev</button>
+    <button type="button" ng-disabled="playDisabled" ng-click="embedPlayer.playVideo()" class="col-sm-3 col-xs-12 btn btn-primary">Play</button>
+    <button type="button" ng-disabled="pauseDisabled" ng-click="embedPlayer.pauseVideo()" class="col-sm-3 col-xs-12 btn btn-default">Pause</button>
+    <button type="button" ng-disabled="nextDisabled" ng-click="nextVideo()" class="col-sm-3 col-xs-12 btn btn-default">Next</button>
+  </div>
+</div>
+
+
+<div class="list-group dn-fade-left" ng-repeat="item in items">
+  <a ng-class="{active: isActive($index)}" ui-sref=".play({videoId: item.id.videoId})" ng-click="playVideo(item.id.videoId, item.snippet.title, $index)" class="list-group-item searched-list">
+    <div class="row">
+      <img class="img-responsive img-thumbnail col-sm-3 col-xs-12" ng-src="{{item.snippet.thumbnails.medium.url}}">
+      <p class="col-sm-3 col-xs-12">{{item.snippet.title}}</p>
+      <button type="button" ng-click="upItem($index); $event.stopPropagation();" ng-disabled="checkUpDisabled($index)" class="col-sm-1 pull-right btn btn-default"><span class="fa fa-chevron-up" id="option-button"></span></button>
+      <button type="button" ng-click="delStar(item); $event.stopPropagation();" class="col-sm-1 pull-right btn btn-default"><span class="fa fa-remove" id="option-button"></span></button>
+      <button type="button" ng-click="downItem($index); $event.stopPropagation();" ng-disabled="checkDownDisabled($index)" class="col-sm-1 pull-right btn btn-default right-button"><span class="fa fa-chevron-down" id="option-button"></span></button>
+    </div>
+  </a>
+</div>

@@ -1,0 +1,41 @@
+<h4>Search BGM</h4>
+<p>聞きたい曲を検索</p>
+<div class="row">
+  <form name="searchFrom" class="col-sm-8">
+    <div class="form-group">
+      <label for="searchWord" class="control-label">
+      <input type="text" ng-model="searchWord" required size="40">
+    </div>
+ </form>
+ <div class="col-sm-4">
+   <p>検索ワード:{{searchWord}}</p>
+ </div>
+</div>
+
+<div ng-show="showVideoDiv" class="dn-fade">
+  <div class="row">
+    <p class="col-sm-8 col-xs-12">再生中: {{playingTitle}}</p>
+    <div class="col-sm-4 col-xs-12" id="watch-video">
+      <button type="button" ng-click="videoToggle()" class="pull-right btn btn-info">Watch video</button>
+    </div>
+  </div>
+  <div class="embed-responsive embed-responsive-16by9 video-wrapper dn-bounce" ng-show="showVideo">
+    <youtube-video class="embed-responsive-item" video_id="videoId" player="embedPlayer" player-vars="playerVars"><youtube-video>
+  </div>
+  <div class="row center-block" id="playAndPause">
+    <button type="button" ng-disabled="prevDisabled" ng-click="prevVideo()" class="col-sm-3 col-xs-12 btn btn-default">Prev</button>
+    <button type="button" ng-disabled="playDisabled" ng-click="embedPlayer.playVideo()" class="col-sm-3 col-xs-12 btn btn-primary">Play</button>
+    <button type="button" ng-disabled="pauseDisabled" ng-click="embedPlayer.pauseVideo()" class="col-sm-3 col-xs-12 btn btn-default">Pause</button>
+    <button type="button" ng-disabled="nextDisabled" ng-click="nextVideo()" class="col-sm-3 col-xs-12 btn btn-primary">Next</button>
+  </div>
+</div>
+
+<div class="list-group" ng-repeat="item in items">
+  <a ng-class="{active: isActive($index)}" ui-sref=".play({videoId: item.id.videoId})" ng-click="playVideo(item.id.videoId, item.snippet.title, $index)" class="list-group-item searched-list">
+    <div class="row">
+      <img class="img-responsive img-thumbnail col-sm-3 col-xs-12" ng-src="{{item.snippet.thumbnails.medium.url}}">
+      <p class="col-sm-3 col-xs-12">{{item.snippet.title}}</p>
+      <button type="button" ng-click="addStar(item); $event.stopPropagation();" class="col-sm-1 pull-right btn btn-default" id="option-button"><span class="fa fa-star-o"></span></button>
+    </div>
+  </a>
+</div>
