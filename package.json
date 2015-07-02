@@ -14,6 +14,6 @@
   "script": {
     "postinstall": "bower install",
     "prestart": "npm install",
-    "start": "node web.js"
+    "start": "http-server -a localhost -p 8000 -c-1"
   }
 }
