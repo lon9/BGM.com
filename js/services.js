@@ -3,17 +3,6 @@
 const API_KEY = "AIzaSyAv9QHftFDcf10H7Ye2lxJKH1fiXFDuEUw"
 
 angular.module('bgm-app')
-.factory('VisitorService', function($http){
-  var visitor = function(){
-    return $http.post('http://medianet.inf.uec.ac.jp/~t1310077/api/visitor.php')
-      .then(function(response){
-        return response.data;
-      });
-  };
-  return {
-    visitor: visitor
-  };
-})
 
 
 .factory('YouTubeSearchService', function($http){
@@ -64,14 +53,4 @@ angular.module('bgm-app')
   };
 })
 
-.factory('AnimeService', function($http){
-  var list = function(params){
-    return $http.get('http://api/moemoe.tokyo/anime/v1', {params: params})
-      .then(function(response){
-        return response.data;
-      });
-  };
-  return {
-    list: list
-  };
-});
+
