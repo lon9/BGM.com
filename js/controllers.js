@@ -6,7 +6,7 @@ angular.module('bgm-app')
 .controller('TopController', function($scope, $state){
   $scope.goHome = function(){
     $state.go('home');
-  }
+  };
 
   /* シェアボタンを読み込む関数 */
   var shareButtonRead = function(){
@@ -45,7 +45,7 @@ angular.module('bgm-app')
 
     //},5000);	//ページを開いて5秒後(5,000ミリ秒後)にシェアボタンを読み込む
 
-  }
+  };
 
   $scope.$on('$viewContentLoaded', shareButtonRead);
 })

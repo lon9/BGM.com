@@ -1,10 +1,8 @@
 'use strict'
 
-const API_KEY = "AIzaSyAv9QHftFDcf10H7Ye2lxJKH1fiXFDuEUw"
+var API_KEY = "AIzaSyAv9QHftFDcf10H7Ye2lxJKH1fiXFDuEUw"
 
 angular.module('bgm-app')
-
-
 .factory('YouTubeSearchService', function($http){
   var search = function(params){
     return $http.get('https://www.googleapis.com/youtube/v3/search', {params: params})
