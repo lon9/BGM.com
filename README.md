@@ -35,3 +35,5 @@ This is angularJS app.  BGM.com help your coding and everything. You can pick up
 [ngAnimate-animate.css](https://github.com/yearofmoo/ngAnimate-animate.css)
 
 [angular-youtube-embed](https://github.com/brandly/angular-youtube-embed)
+
+[angulike](https://github.com/cornflourblue/angulike)

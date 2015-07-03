@@ -4,29 +4,9 @@
   <div class="pull-right">
     <button type="button" class="btn btn-primary" ng-click="goHome()">今すぐ始める</button>
   </div>
-<!-- シェアボタン [ここからコピー] -->
-<div class="social-area">
-  <ul class="social-button nav nav-pills">
-    <!-- Twitter -->
-    <li class="sc-tw"><a data-url="https://bgm-com.herokuapp.com/#/BGM.com/" href="https://twitter.com/share" class="twitter-share-button" data-lang="ja" data-count="vertical" data-text="BGM.comで音楽を聞いています!" data-hashtags="BGM.com" >ツイート</a></li>
-
-    <!-- Facebook -->
-    <li class="sc-fb"><div class="fb-like" data-href="https://bgm-com.herokuapp.com/#/BGM.com/" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div></li>
-
-    <!-- Google+ -->
-    <li><div data-href="https://bgm-com.heroku.com/#/BGM.com/" class="g-plusone" data-size="tall"></div></li>
-
-    <!-- はてなブックマーク -->
-    <li><a href="http://b.hatena.ne.jp/entry/https://bgm-com.herokuapp.com/#/BGM.com/" class="hatena-bookmark-button" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" data-hatena-bookmark-title="BGM.comで音楽を聞いた!"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border:none;" /></a></li>
-
-    <!-- pocket -->
-    <li><a data-save-url="https://bgm-com.herokuapp.com/#/BGM.com" data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a></li>
-
-  </ul>
-
-  <!-- Facebook用 -->
-  <div id="fb-root"></div>
-
-  </div>
-  <!-- シェアボタン [ここまでコピー] -->
+  <div class="btn-group">
+    <div fb-like="shareModel.url"></div>
+    <div google-plus="shareModel.url"></div>
+    <div tweet="shareModel.name" tweet-url="shareModel.url"></div>
+    <div pin-it="shareModel.name" pin-it-url="shareModel.url"></div>
 </div>

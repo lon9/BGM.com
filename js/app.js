@@ -6,7 +6,8 @@ angular
     'ui.router',
     'youtube-embed',
     'LocalStorageModule',
-    'ngAnimate-animate.css'
+    'ngAnimate-animate.css',
+    'angulike'
   ])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
       $urlRouterProvider) {
