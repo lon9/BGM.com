@@ -1,12 +1,28 @@
-<div class="jumbotron">
+<div class="wrapper">
+<div class="jumbotron dn-fade" ng-show="showJumbo">
   <h2>BGM.com</h2>
-  <h4>BGM.comはあなたのコーディングのお供です。</h4>
+  <h4>makes your life better</h4>
   <div class="pull-right">
-    <button type="button" class="btn btn-primary" ng-click="goHome()">今すぐ始める</button>
+    <button type="button" id="startButton" class="btn btn-warning" ng-click="goHome()">今すぐ始める</button>
   </div>
-  <div class="btn-group">
+  <div>
     <div fb-like="shareModel.url"></div>
     <div google-plus="shareModel.url"></div>
     <div tweet="shareModel.name" tweet-url="shareModel.url"></div>
     <div pin-it="shareModel.name" pin-it-url="shareModel.url"></div>
+  </div>
+</div>
+
+<table class="table-responsive" id="topTable">
+  <tr>
+    <td><div id="topImageWrapper"><img id="topImage" class="img-responsive center-block dn-fade-up" ng-src="{{searchImage}}" ng-show="showImage"></div></td>
+    <td><div id="topImageWrapper"><img id="topImage" class="img-responsive center-block dn-fade-up" ng-src="{{rankingImage}}" ng-show="showImage"></div></td>
+    <td><div id="topImageWrapper"><img id="topImage" class="img-responsive center-block dn-fade-up" ng-src="{{storeImage}}" ng-show="showImage"></div></td>
+  </tr>
+  <tr>
+    <td><h6 id="landingText" class="dn-fade-up" ng-show="showText">BGM.comでは、YouTube上のすべての動画を検索して、BGMとして聞くことができます!</h6></td>
+    <td><h6 id="landingText" class="dn-fade-up" ng-show="showText">iTunesのリアルタイムランキングから、聞きたい音楽を聞くことができます!</h6></td>
+    <td><h6 id="landingText" class="dn-fade-up" ng-show="showText">気に入った曲は保存して自分だけの作業用BGMをつくることができます!</h6></td>
+  </tr>
+</table>
 </div>
