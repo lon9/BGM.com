@@ -1,5 +1,7 @@
 #BGM.com
 
+![screen](https://github.com/rompei/BGM.com/blob/master/art/screenshot.png?raw=true)
+
 ##Description 
 
 This is angularJS app.  BGM.com help your coding and everything. You can pick up the music you like and listen forever!!
