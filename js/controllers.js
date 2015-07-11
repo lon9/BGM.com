@@ -13,7 +13,7 @@ angular.module('bgm-app')
     name: "I'm using BGM.com"
   }
 
-  $scope.searchImage = "images/music.png";
+  $scope.searchImage = "images/head.png";
   $scope.rankingImage = "images/ranking.png";
   $scope.storeImage = "images/database.png";
 
