@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="ja">
+  <head class="noto">
     <meta charset="utf-8">
+    <meta description="BGM.comは好きな曲を選んでBGMにを作れるWebサービスです! あなたの作業を爆速に効率化します! 約10000曲のプレイリストを作成できます! 世界の最新音楽チャートの曲をBGMにできます! 現在(過去に)放送しているアニメソングを聞くことができます!">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BGM.com</title>
+    <title>BGM.comi -自分だけのBGM作成サービス-</title>
 
     <link rel="shortcut icon" href="images/favicon.ico">
     <!-- Bootstrap -->
@@ -37,6 +38,7 @@
             <li><a ui-sref="home"><span class="fa fa-home" aria-hidden="true"></span> Home</a></li>
             <li><a ui-sref="search"><span class="fa fa-search" aria-hidden="true"></span> Search</a></li>
             <li><a ui-sref="ranking"><span class="fa fa-star" aria-hidden="true"></span> Ranking</a></li>
+            <li><a ui-sref="anime"><span class="fa fa-film" aria-hidden="true"></span> Anime</a></li>
             <li><a ui-sref="favorite"><span class="fa fa-heart" aria-hidden="true"></span> Favorite</a></li>
           </ul>
         </div>
@@ -48,7 +50,9 @@
     <footer>
       <div class="container">
         <div class="pull-right"id="google_translate_element"></div>
-        <a href="https://github.com/Rompei/BGM.com"><small><span class="fa fa-github" aria-hidden="true"></span>Github</small></a>
+        <a href="https://github.com/Rompei/BGM.com"><small>Github(front-end)</small></a>
+        <span class="fa fa-github"></span>
+        <a href="https://github.com/Rompei/BGM.com-server">Github(back-end)</small></a>
         <p><small>Copyright <span class="fa fa-heart" aria-hidden="true"></span> 2015 ZUSN.inc All rights received.</small></p>
       </div>
     </footer>
@@ -84,6 +88,7 @@
     <script src="bower_components/angular-youtube-mb/dist/angular-youtube-embed.min.js"></script>
     <script src="bower_components/ngAnimate-animate.css/animate.js"></script>
     <script src="bower_components/angulike/angulike.js"></script>
+    <script src="js/assets/color.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>

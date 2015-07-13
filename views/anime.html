@@ -1,0 +1,49 @@
+<h4>アニソン検索</h4>
+<p>アニメを選択</p>
+<div class="alert alert-warning alert-dismissable" ng-show="loadError">
+  <button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  エラー: {{errorTitle}}の再生に失敗しました。次の曲に移行します。
+</div>
+
+<div class="dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{coursName}}</button> 
+  <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdowmMenu1">
+    <li role="presentation" ng-repeat="cool in cools" ng-click="selectCours(cool.year, cool.cours)"><a ui-sref=".detail({year: cool.year, cours: cool.cours})">{{cool.year}}年{{cool.cours}}クール</a></li>
+  </ul>
+</div>
+
+<div ng-show="showVideoDiv" class="dn-fade">
+  <div class="row">
+    <div class="col-sm-7 col-xs-12">
+      <p>再生中: {{playingTitle}}</p>
+    </div>
+    <div class="col-sm-1 col-xs-12 pull-right">
+      <button type="button" ng-click="addStar()" class="btn btn-default"><span class="fa fa-star-o"></span></button>
+    </div>
+    <div class="col-sm-4 col-xs-12 pull-right" id="watch-video">
+      <button type="button" ng-click="videoToggle()" class="btn btn-info">Watch video</button>
+    </div>
+  </div>
+  <div class="embed-responsive embed-responsive-16by9 video-wrapper dn-bounce" ng-show="showVideo">
+    <youtube-video class="embed-responsive-item" video_id="videoId" player="embedPlayer" player-vars="playerVars"></youtube-video>
+  </div>
+  <div class="row center-block" id="playAndPause">
+    <button type="button" ng-disabled="playDisabled" ng-click="embedPlayer.playVideo()" class="col-sm-5 col-xs-12 btn btn-primary">Play</button>
+    <button type="button" ng-disabled="pauseDisabled" ng-click="embedPlayer.pauseVideo()" class="col-sm-5 col-xs-12 btn btn-default">Pause</button>
+  </div>
+</div>
+
+<div id="animeItem" ng-style="{ 'background-color': {{backColor.color}} }" class="container dn-fade-up" ng-repeat="anime in animes">
+    <div class="row">
+      <div class="col-sm-8 col-xs-12">
+        <h5 ng-style="{ 'color': {{backColor.textColor}} }">{{anime.title}}</h5>
+        <p ng-style="{ 'color': {{backColor.textColor}} }"><span class="fa fa-link"></span> 公式サイト: <a ng-style="{ 'color': {{backColor.textColor}} }" ui-sref=".move()" ng-click="open(anime.public_url)">{{anime.public_url}}</a></p>
+        <p ng-style="{ 'color': {{backColor.textColor}} }"><span class="fa fa-twitter"></span> Twitterアカウント: <a ng-style="{ 'color': {{backColor.textColor}} }" ui-sref=".move()" ng-click="profile(anime.twitter_account)">{{anime.twitter_account}}</a></p>
+        <p ng-style="{ 'color': {{backColor.textColor}} }"><span class="fa fa-share-alt"></span> ハッシュタグ:  <a ng-style="{ 'color': {{backColor.textColor}} }" ui-sref=".move()" ng-click="tweet(anime.twitter_hash_tag)">{{anime.twitter_hash_tag}}</a></p>
+      </div>
+      <div class="col-sm-2 col-xs-12 pull-right">
+        <button type="button" ng-click="playOP(anime.title, $index); $event.stopPropagation();" class="btn btn-default" id="playOP">Play OP</button>
+        <button type="button" ng-click="playED(anime.title, $index); $event.stopPropagation();" class="btn btn-default" id="playED">Play ED</button>
+      </div>
+    </div>
+</div>
