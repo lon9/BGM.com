@@ -51,4 +51,35 @@ angular.module('bgm-app')
   };
 })
 
+.factory('AnimeService', function($http){
+  var list = function(params){
+    return $http.get('https://bgm-server.herokuapp.com/proxy', {params: params})
+      .then(function(response){
+        var jsonData = response.data;
+        var result = new Array();
+        for(var i=1; i<Object.keys(jsonData).length+1; i++){
+          result.push(jsonData[i]);
+        }
+        return result;
+      });
+  };
+  return {
+    list: list
+  };
+})
 
+.factory('AnimeSearchService', function($http){
+  var search = function(year, cours){
+    var url = 'http://api.moemoe.tokyo/anime/v1/master/' + year + '/' + cours;
+    var params = {
+      url: url
+    }
+    return $http.get('https://bgm-server.herokuapp.com/proxy', {params: params})
+      .then(function(response){
+        return response.data;  
+      });
+  };
+  return {
+    search: search
+  };
+});

@@ -40,6 +40,17 @@ angular
       .state('ranking.play', {
         url: '/play'
       })
+      .state('anime', {
+        url: '/anime',
+        templateUrl: 'views/anime.html',
+        controller: 'AnimeController'
+      })
+      .state('anime.detail', {
+        url: '/:year/:cours' 
+      })
+      .state('anime.move',{
+        
+      })
       .state('favorite', {
         url: '/BGM.com/favorite',
         templateUrl: 'views/favorite.html',
