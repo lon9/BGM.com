@@ -1,0 +1,7 @@
+<h4>お問合せ</h4>
+<p>今後の開発に役立てますので、皆様のご意見ご要望をお聞かせください。</p>
+
+<form>
+  <textarea placeholder="お問合せ内容を記述してください。" rows="7" cols="40" class="form-control" ng-model="inquery.content"></textarea>
+  <button type="submit" class="btn btn-primary" ng-disabled="!inquery.content" id="submit-button" ng-click="send()">送信</button>
+</form>

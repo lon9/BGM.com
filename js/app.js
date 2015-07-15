@@ -9,8 +9,8 @@ angular
     'ngAnimate-animate.css',
     'angulike'
   ])
-  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
-      $urlRouterProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider,
+      $urlRouterProvider, $httpProvider) {
     $stateProvider
       .state('top', {
         url:'/BGM.com/',
@@ -58,7 +58,14 @@ angular
       })
       .state('favorite.play', {
         url: '/play',
+      })
+      .state('inquery', {
+        url: '/inquery',
+        templateUrl: 'views/inquery.html',
+        controller: 'InqueryController'
       });
       
     $urlRouterProvider.otherwise('home');
+
+    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;application/json;charset=utf-8';
   }]);
