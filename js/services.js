@@ -82,4 +82,17 @@ angular.module('bgm-app')
   return {
     search: search
   };
+})
+
+.factory('InqueryService', function($http){
+  var send = function(data){
+    console.log(data)
+    return $http.post('https://bgm-server.herokuapp.com/inquery', data)
+      .then(function(response){
+        return response.status;
+      });
+  };
+  return {
+    send: send
+  };
 });
