@@ -273,6 +273,8 @@ angular.module('bgm-app')
 
   $scope.$on('youtube.player.ended', function($event, player){
     playingVideoNum++;
+    if(playingVideoNum==musicData.length)
+      playingVideoNum = 0;
     loadVideo(musicData[playingVideoNum].title, musicData[playingVideoNum].artist);
   });
 
@@ -455,6 +457,8 @@ angular.module('bgm-app')
 
   $scope.$on('youtube.player.ended', function($event, player){
     playingVideoNum++;
+    if(playingVideoNum==animeData.length)
+      playingVideoNum = 0;
     loadVideo(animeData[playingVideoNum].title);
   });
 
@@ -600,6 +604,8 @@ angular.module('bgm-app')
 
   $scope.$on('youtube.player.ended', function($event, player){
     playingVideoNum++;
+    if (playingVideoNum == favorites.length)
+      playingVideoNum = 0;
     playVideo();
   });
   
