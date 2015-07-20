@@ -85,8 +85,8 @@ angular.module('bgm-app')
 })
 
 //Send video to server and increment like count.
-.factory('LikeSendService', function($http){
-  var send = function(video){
+.factory('SendLikeService', function($http, localStorageService){
+  var send = function(video, listener){
     var data = {
       videoId: video.id.videoId,
       title: video.snippet.title,
@@ -96,19 +96,62 @@ angular.module('bgm-app')
         height: video.snippet.thumbnails['high'].height
       },
       mediumThumbnail: {
-        url: video.snippet.thumbnail['medium'].url,
-        width: video.snippwt.thumbnail['medium'].width,
-        height: video.snippwt.thumbnail['medium'].height
+        url: video.snippet.thumbnails['medium'].url,
+        width: video.snippet.thumbnails['medium'].width,
+        height: video.snippet.thumbnails['medium'].height
       } 
     }
-    return $http.post('http://localhost:9000/like', data)
-      .then(function(response){
-        return response.status;
+    var liked = JSON.parse(localStorageService.get("liked"));
+    if(liked!=null){
+      for(var i=0; i<liked.length; i++){
+        if(liked[i].videoId==data.videoId){
+          sendResult(false);
+          return false;
+        }
+      }
+      if(i>liked.length-1){
+        request(data).then(function(status){
+          if(status==200){
+            liked.push(data);
+            localStorageService.set("liked", JSON.stringify(liked));
+            sendResult(true);
+            return true;
+          }else{
+            sendResult(false);
+            return false;
+          }
+        });
+      }
+    }else{
+      request(data).then(function(status){
+        if(status==200){
+          liked = new Array();
+          liked.push(data);
+          localStorageService.set("liked", JSON.stringify(liked));
+          sendResult(true);
+          return true;
+        }else{
+          sendResult(false);
+          return false;
+        }
       });
-    return {
-      send: send
     };
+
+    function request(data){
+      return $http.post('http://localhost:9000/like', data)
+        .then(function(response){
+          return response.status;
+        });
+    }
+
+    function sendResult(result){
+      if(listener!=null)
+        listener(result);
+    }
   };  
+  return {
+    send: send
+  }
 })
 
 

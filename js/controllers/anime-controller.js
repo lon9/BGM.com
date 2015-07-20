@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('bgm-app')
-.controller('AnimeController', function($scope, $resource, $window, localStorageService, AnimeService, AnimeSearchService, YouTubeSearchService){
+.controller('AnimeController', function($scope, $resource, $window, localStorageService, AnimeService, AnimeSearchService, YouTubeSearchService, SendLikeService){
   var TWITTER_PROFILE_URL = "https://twitter.com/";
   var TWEET_URL = "https://twitter.com/intent/tweet?hashtags=";
   var HASH_TAG = "BGM.com";
@@ -92,6 +92,8 @@ angular.module('bgm-app')
         localStorageService.set("favorite", JSON.stringify(favorites));
         alert("追加しました。");
       }
+
+      SendLikeService.send(item, null);
     });
   };
 
