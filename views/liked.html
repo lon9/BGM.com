@@ -1,12 +1,12 @@
 <div class="row">
   <h4 class="col-sm-9 col-xs-12">みんなのBGM</h4>
-  <p>みんなが聞いているBGM</p>
   <div class="col-sm-3 col-xs-12">
     <button type="button" ng-click="shuffle()" class="pull-right btn btn-default">Shuffle</button>
   </div>
 </div>
 
-<h5 ng-hide="empty">お気に入りが存在しません。</h5>
+<p>お気に入り登録数の多いBGMです</p>
+
 
 <div ng-show="showVideoDiv" class="dn-fade">
   <div class="row">
@@ -30,11 +30,10 @@
 <div class="list-group dn-fade-left" ng-repeat="video in videos">
   <a ng-class="{active: isActive($index)}" ui-sref=".play({videoId: video.videoId})" ng-click="playVideo(video.videoId, video.title, $index)" class="list-group-item searched-list">
     <div class="row">
+      <h2 class="col-sm-1 col-xs-12">{{$index+1}} 位</h2>
       <img class="img-responsive img-thumbnail col-sm-3 col-xs-12" ng-src="{{video.mediumThumbnail.url}}">
       <p class="col-sm-3 col-xs-12">{{video.title}}</p>
-      <p class="col-sm-3 col-xs-12">{{video.artist}}</p>
-      <p class="col-sm-3 col-xs-12">{{video.publishedDate}}</p>
-      <button type="button" ng-click="downItem($index); $event.stopPropagation();" ng-disabled="checkDownDisabled($index)" class="col-sm-1 pull-right btn btn-default right-button"><span class="fa fa-chevron-down" id="option-button"></span></button>
+      <button type="button" ng-click="addStar(video.videoId); $event.stopPropagation();" class="col-sm-1 pull-right btn btn-default"><span class="fa fa-star-o" id="option-button"></span></button>
     </div>
   </a>
 </div>

@@ -51,6 +51,14 @@ angular
       .state('anime.move',{
         
       })
+      .state('liked', {
+        url: '/BGM.com/liked',
+        templateUrl: 'views/liked.html',
+        controller: 'LikedController'
+      })
+      .state('liked.play', {
+        url: '/:videoId'
+      })
       .state('favorite', {
         url: '/BGM.com/favorite',
         templateUrl: 'views/favorite.html',

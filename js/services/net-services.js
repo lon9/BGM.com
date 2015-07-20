@@ -162,10 +162,10 @@ angular.module('bgm-app')
       .then(function(response){
         return response.data;
       });
-    return{
-      receive: receive
-    };
   };
+  return{
+    receive: receive
+  }
 })
 
 .factory('InqueryService', function($http){
