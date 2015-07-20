@@ -1,3 +1,5 @@
+'use strict'
+
 $(function(){
   $(window).scroll(function(){
     var now = $(window).scrollTop();
