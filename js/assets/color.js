@@ -1,3 +1,5 @@
+'use strict'
+
 var colors = [
  {
   "color": "'rgba(255, 23, 68, 0.5)'",
