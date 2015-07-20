@@ -84,6 +84,47 @@ angular.module('bgm-app')
   };
 })
 
+//Send video to server and increment like count.
+.factory('LikeSendService', function($http){
+  var send = function(video){
+    var data = {
+      videoId: video.id.videoId,
+      title: video.snippet.title,
+      highThumbnail: {
+        url: video.snippet.thumbnails['high'].url,
+        width: video.snippet.thumbnails['high'].width,
+        height: video.snippet.thumbnails['high'].height
+      },
+      mediumThumbnail: {
+        url: video.snippet.thumbnail['medium'].url,
+        width: video.snippwt.thumbnail['medium'].width,
+        height: video.snippwt.thumbnail['medium'].height
+      } 
+    }
+    return $http.post('http://localhost:9000/like', data)
+      .then(function(response){
+        return response.status;
+      });
+    return {
+      send: send
+    };
+  };  
+})
+
+
+// Get videos.
+.factory('VideoIndexService', function($http){
+  var receive = function(params){
+    return $http.get('http://localhost:9000/video', {params: params})
+      .then(function(response){
+        return response.data;
+      });
+    return{
+      receive: receive
+    };
+  };
+})
+
 .factory('InqueryService', function($http){
   var send = function(data){
     return $http.post('https://bgm-server.herokuapp.com/inquery', data)
