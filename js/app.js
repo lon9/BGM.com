@@ -71,6 +71,11 @@ angular
         url: '/inquery',
         templateUrl: 'views/inquery.html',
         controller: 'InqueryController'
+      })
+      .state('video', {
+        url: '/video',
+        templateUrl: 'views/video-edit.html',
+        controller: 'VideoEditController'
       });
       
     $urlRouterProvider.otherwise('home');

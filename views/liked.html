@@ -5,7 +5,7 @@
   </div>
 </div>
 
-<p>お気に入り登録数の多いBGMです</p>
+<p>人気の高い曲ランキング</p>
 
 
 <div ng-show="showVideoDiv" class="dn-fade">
@@ -30,10 +30,16 @@
 <div class="list-group dn-fade-left" ng-repeat="video in videos">
   <a ng-class="{active: isActive($index)}" ui-sref=".play({videoId: video.videoId})" ng-click="playVideo(video.videoId, video.title, $index)" class="list-group-item searched-list">
     <div class="row">
-      <h2 class="col-sm-1 col-xs-12">{{$index+1}} 位</h2>
+      <div class="col-sm-2 col-xs-12">
+        <h2>{{$index+1 | lank}}</h2>
+        <p>{{video.liked}} botes</p>
+      </div>
       <img class="img-responsive img-thumbnail col-sm-3 col-xs-12" ng-src="{{video.mediumThumbnail.url}}">
-      <p class="col-sm-3 col-xs-12">{{video.title}}</p>
-      <button type="button" ng-click="addStar(video.videoId); $event.stopPropagation();" class="col-sm-1 pull-right btn btn-default"><span class="fa fa-star-o" id="option-button"></span></button>
+      <div class="col-sm-3 col-xs-12">
+        <p>{{video.title}}</p>
+        <p>{{video.artist}}</p>
+        <p>{{video.publishedDate | escapeDate | date:'yyyy年M月d日EEE'}}</p>
+      </div>
     </div>
   </a>
 </div>

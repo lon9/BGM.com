@@ -3,10 +3,9 @@
 
 
 angular.module('bgm-app')
-.controller('LikedController', function($scope, localStorageService, VideoIndexService, YouTubeVideoService, SendLikeService){
+.controller('LikedController', function($scope, localStorageService, VideoIndexService){
   var playingVideoNum = -1;
   var videos = [];
-  var favorites = JSON.parse(localStorageService.get("favorite"));
 
   var params = {
     order: "like"
@@ -28,44 +27,7 @@ angular.module('bgm-app')
     $scope.showVideoDiv=true;
     changeDisabled();
   };
-
-  $scope.addStar = function(videoId){
-    var item = null;
-    var params = {
-      part: "id,snippet",
-      id: videoId,
-      key: API_KEY
-    }
-    YouTubeVideoService.video(params).then(function(data){
-      item = data.items[0];
-      if(item==null){
-        alert("保存できません。データを取得できませんでした。");
-        return;
-      }
-      if(favorites!=null){
-        for(var i=0; i<favorites.length; i++){
-          if(favorites[i].id.videoId==item.id.videoId){
-            alert("すでに登録されています。");
-            break;
-          }
-        }
-        if(i>favorites.length-1){
-          favorites.unshift(item);
-          localStorageService.set("favorite", JSON.stringify(favorites));
-          alert("追加しました。");
-        }
-      }else{
-        favorites = new Array();
-        favorites.unshift(item);
-        localStorageService.set("favorite", JSON.stringify(favorites));
-        alert("追加しました。");
-      }
-
-      //Send like.
-      SendLikeService.send(item, null);
-    });
-  };
-
+  
    
   $scope.videoToggle = function(){
     if($scope.showVideo)

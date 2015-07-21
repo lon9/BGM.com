@@ -128,3 +128,7 @@
   display: block;
   cursor:pointer;
 }
+
+.video-pager{
+  text-align:center;
+}
