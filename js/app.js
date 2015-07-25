@@ -13,16 +13,16 @@ angular
       $urlRouterProvider, $httpProvider) {
     $stateProvider
       .state('top', {
-        url:'/BGM.com/',
+        url:'/',
         templateUrl: 'views/top.html',
         controller: 'TopController'
       })
       .state('home', {
-        url: '/BGM.com/home',
+        url: '/home',
         templateUrl: 'views/home.html'
       })
       .state('search', {
-        url: '/BGM.com/search',
+        url: '/search',
         templateUrl: 'views/search.html',
         controller: 'SearchController'
       })
@@ -30,7 +30,7 @@ angular
         url: '/play/:videoId',
       })
       .state('ranking', {
-        url: '/BGM.com/ranking',
+        url: '/ranking',
         templateUrl: 'views/ranking.html',
         controller: 'RankingController'
       })
@@ -52,7 +52,7 @@ angular
         
       })
       .state('liked', {
-        url: '/BGM.com/liked',
+        url: '/liked',
         templateUrl: 'views/liked.html',
         controller: 'LikedController'
       })
@@ -60,7 +60,7 @@ angular
         url: '/:videoId'
       })
       .state('favorite', {
-        url: '/BGM.com/favorite',
+        url: '/favorite',
         templateUrl: 'views/favorite.html',
         controller: 'FavoriteController'
       })
