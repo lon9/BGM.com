@@ -90,16 +90,7 @@ angular.module('bgm-app')
     var data = {
       videoId: video.id.videoId,
       title: video.snippet.title,
-      highThumbnail: {
-        url: video.snippet.thumbnails['high'].url,
-        width: video.snippet.thumbnails['high'].width,
-        height: video.snippet.thumbnails['high'].height
-      },
-      mediumThumbnail: {
-        url: video.snippet.thumbnails['medium'].url,
-        width: video.snippet.thumbnails['medium'].width,
-        height: video.snippet.thumbnails['medium'].height
-      } 
+      url: video.snippet.thumbnails['medium'].url
     }
     var liked = JSON.parse(localStorageService.get("liked"));
     if(liked!=null){
