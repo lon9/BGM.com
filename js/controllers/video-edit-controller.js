@@ -1,8 +1,29 @@
 'use strict'
 
 angular.module('bgm-app')
-.controller('VideoEditController', function($scope, $resource, $window){
-  var Video = $resource('http://localhost:9000/video/:id', {id: '@id'});
+.controller('VideoEditController', function($scope, $resource, $window, $location, $state, requireAuth, BasicAuthService){
+  
+  if(requireAuth.indexOf($location.path())> -1 && !BasicAuthService.isCode()){
+    event.preventDefault();
+    $state.go('basicLogin');
+  }
+
+  var Video = $resource('http://localhost:9000/video/:id', {id: '@id'}, 
+      {
+        destroy: {
+          method: 'DELETE',
+          headers: {
+            'Authorization': 'Basic ' + BasicAuthService.isCode()
+          }
+        },
+        update: {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Basic ' + BasicAuthService.isCode()
+          }
+        }
+      
+      });
   var nowPage = 1;
 
   var params = {
@@ -10,7 +31,6 @@ angular.module('bgm-app')
   }
 
   $scope.showContent = true;
-
 
   $scope.playerVars = {
     autoplay: 1
@@ -52,16 +72,16 @@ angular.module('bgm-app')
 
   $scope.update = function(video){
     //Update video
-    video.$save({id: video.id}, function(data){
+    video.$update({id: video.id}, function(data){
       $window.alert(data.title + " was updated.");
-    });
+    })
   };
 
   $scope.delete = function(video){
     //delete music
     var conf = $window.confirm("Are you sure to delete " + video.title + "?");
     if(conf==true){
-      Video.delete({id: video.id}, function(){
+      video.$destroy({id: video.id}, function(){
         $scope.videos = Video.query(params);
       });
     }

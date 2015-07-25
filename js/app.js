@@ -7,8 +7,20 @@ angular
     'youtube-embed',
     'LocalStorageModule',
     'ngAnimate-animate.css',
-    'angulike'
+    'angulike',
+    'base64'
   ])
+  .constant('requireAuth', [
+    '/video'
+  ])
+  .run(['$rootScope', '$location', 'BasicAuthService', 'requireAuth', function($rootScope, $location, BasicAuthService, requireAuth){
+    $rootScope.$on('$routeChangeState', function(event){
+      if(requireAuth.indexOf($location.path())> -1 && !BasicAuthService.isCode()){
+        event.preventDefault();
+        $location.path('basicLogin');
+      }
+    });
+  }])
   .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider,
       $urlRouterProvider, $httpProvider) {
     $stateProvider
@@ -71,6 +83,11 @@ angular
         url: '/inquery',
         templateUrl: 'views/inquery.html',
         controller: 'InqueryController'
+      })
+      .state('basicLogin', {
+        url: '/basiclogin',
+        templateUrl: 'views/basic-login.html',
+        controller: 'BasicLoginController'
       })
       .state('video', {
         url: '/video',
