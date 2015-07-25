@@ -114,7 +114,7 @@
   border-radius: 50px;
   -webkit-border-radius:50px;
   -moz-border-radius:50px;
-  ransition: all 0.3s;
+  transition: all 0.3s;
 }
 
 #page-top p:hover{

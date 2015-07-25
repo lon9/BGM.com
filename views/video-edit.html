@@ -32,23 +32,25 @@
 <div ng-show="showContent" class="dn-fade">
   <div ng-include="'views/video.html'"></div>
 
-  <table class="table table-responsive table-hover table-striped table-bordered">
-    <tr><th>ID</th><th>Video ID</th><th>Title</th><th>Artist</th><th>Published date</th><th>Listen to music</th><th>Update</th><th>Delete</th></tr>
-    <tr ng-repeat="video in videos" class="list-group">
-      <td>{{video.id}}</td>
-      <td>{{video.videoId}}</td>
-      <td><input  ng-model="video.title"></td>
-      <td><input  ng-model="video.artist"></td>
-      <td><input  ng-model="video.publishedDate"></td>
-      <td><button ng-click="play()" class="btn btn-default">Play music</button></td>
-      <td><button ng-click="update()" class="btn btn-primary">Update</button></td>
-      <td><button ng-click="delete()" class="btn btn-danger">Delete</button></td>
-    </tr>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-hover table-striped table-bordered">
+      <tr><th>ID</th><th>Video ID</th><th>Title</th><th>Artist</th><th>Published date</th><th>Listen to music</th><th>Update</th><th>Delete</th></tr>
+      <tr ng-repeat="video in videos" class="list-group">
+        <td>{{video.id}}</td>
+        <td>{{video.videoId}}</td>
+        <td><input  ng-model="video.title"></td>
+        <td><input  ng-model="video.artist"></td>
+        <td><input  ng-model="video.publishedDate"></td>
+        <td><button ng-click="play(video)" class="btn btn-default">Play music</button></td>
+        <td><button ng-click="update(video)" class="btn btn-primary">Update</button></td>
+        <td><button ng-click="delete(video)" class="btn btn-danger">Delete</button></td>
+      </tr>
+    </table>
+  </div>
 
   <div class="video-pager">
     <ul class="pagination" ng-repeat="page in pages">
-      <li><a href="" ng-click="nextPage($index)">{{page.number}}</a></li>
+      <li><a href="" ng-click="nextPage(page.number)">{{page.number}}</a></li>
     </ul>
   </div>
 </div>
