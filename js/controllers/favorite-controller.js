@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('bgm-app')
-.controller('FavoriteController', function($scope, SendLikeService, localStorageService){
+.controller('FavoriteController', function($scope, $analytics, SendLikeService, localStorageService){
   var playingVideoNum = -1;
   var favorites = JSON.parse(localStorageService.get("favorite"));
   if(favorites!=null)
@@ -112,6 +112,11 @@ angular.module('bgm-app')
     else
       return false;
   };
+
+  $scope.$on('youtube.player.ready', function($event, player){
+    $analytics.eventTrack('Play');
+  });
+
 
   $scope.$on('youtube.player.playing', function($event, player){
     $scope.playDisabled=true;

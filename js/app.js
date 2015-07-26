@@ -8,17 +8,23 @@ angular
     'LocalStorageModule',
     'ngAnimate-animate.css',
     'angulike',
-    'base64'
+    'base64',
+    'angulartics',
+    'angulartics.google.analytics'
   ])
   .constant('requireAuth', [
     '/video'
   ])
   .run(['$rootScope', '$location', 'BasicAuthService', 'requireAuth', function($rootScope, $location, BasicAuthService, requireAuth){
-    $rootScope.$on('$routeChangeState', function(event){
+    $rootScope.$on('$stateChangeStart', function(event){
       if(requireAuth.indexOf($location.path())> -1 && !BasicAuthService.isCode()){
         event.preventDefault();
         $location.path('basicLogin');
       }
+    });
+
+    $rootScope.$on('$stateChangeSuccess', function(event){
+      $rootScope.$emit('$routeChangeSuccess');
     });
   }])
   .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider,

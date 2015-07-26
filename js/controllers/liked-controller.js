@@ -3,7 +3,7 @@
 
 
 angular.module('bgm-app')
-.controller('LikedController', function($scope, localStorageService, VideoIndexService){
+.controller('LikedController', function($scope, $analytics, localStorageService, VideoIndexService){
   var playingVideoNum = -1;
   var videos = [];
 
@@ -59,6 +59,11 @@ angular.module('bgm-app')
     else
       return false;
   };
+
+  $scope.$on('youtube.player.ready', function($event, player){
+    $analytics.eventTrack('Play');
+  });
+
 
   $scope.$on('youtube.player.playing', function($event, player){
     $scope.playDisabled=true;

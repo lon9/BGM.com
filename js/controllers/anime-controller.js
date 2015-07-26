@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('bgm-app')
-.controller('AnimeController', function($scope, $resource, $window, localStorageService, AnimeService, AnimeSearchService, YouTubeSearchService, SendLikeService){
+.controller('AnimeController', function($scope, $resource, $window, $analytics, localStorageService, AnimeService, AnimeSearchService, YouTubeSearchService, SendLikeService){
   var TWITTER_PROFILE_URL = "https://twitter.com/";
   var TWEET_URL = "https://twitter.com/intent/tweet?hashtags=";
   var HASH_TAG = "BGM.com";
@@ -104,6 +104,11 @@ angular.module('bgm-app')
     else
       $scope.showVideo=true;
   };
+
+
+  $scope.$on('youtube.player.ready', function($event, player){
+    $analytics.eventTrack('Play');
+  });
  
   $scope.$on('youtube.player.playing', function($event, player){
     $scope.playDisabled = true;
