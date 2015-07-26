@@ -84,6 +84,91 @@ angular.module('bgm-app')
   };
 })
 
+//Send video to server and increment like count.
+.factory('SendLikeService', function($http, $location, localStorageService){
+  var send = function(video, listener){
+    var data = {
+      videoId: video.id.videoId,
+      title: video.snippet.title,
+      url: video.snippet.thumbnails['medium'].url
+    }
+    var liked = JSON.parse(localStorageService.get("liked"));
+    if(liked!=null){
+      for(var i=0; i<liked.length; i++){
+        if(liked[i].videoId==data.videoId){
+          sendResult(false);
+          return false;
+        }
+      }
+      if(i>liked.length-1){
+        request(data).then(function(status){
+          if(status==200){
+            liked.push(data);
+            localStorageService.set("liked", JSON.stringify(liked));
+            sendResult(true);
+            return true;
+          }else{
+            sendResult(false);
+            return false;
+          }
+        });
+      }
+    }else{
+      request(data).then(function(status){
+        if(status==200){
+          liked = new Array();
+          liked.push(data);
+          localStorageService.set("liked", JSON.stringify(liked));
+          sendResult(true);
+          return true;
+        }else{
+          sendResult(false);
+          return false;
+        }
+      });
+    };
+
+    function request(data){
+      var url = null;
+      if($location.host().indexOf('localhost')!=-1)
+        url = 'http://localhost:9000/like';
+      else
+        url = 'https://bgm-server.herokuapp.com/like';
+      return $http.post(url, data)
+        .then(function(response){
+          return response.status;
+        });
+    }
+
+    function sendResult(result){
+      if(listener!=null)
+        listener(result);
+    }
+  };  
+  return {
+    send: send
+  }
+})
+
+
+// Get videos.
+.factory('VideoIndexService', function($http, $location){
+  var url = null;
+  if($location.host().indexOf('localhost')!=-1)
+    url = 'http://localhost:9000/video';
+  else
+    url = 'https://bgm-server.herokuapp.com/video';
+  var receive = function(params){
+    return $http.get(url, {params: params})
+      .then(function(response){
+        return response.data;
+      });
+  };
+  return{
+    receive: receive
+  }
+})
+
 .factory('InqueryService', function($http){
   var send = function(data){
     return $http.post('https://bgm-server.herokuapp.com/inquery', data)

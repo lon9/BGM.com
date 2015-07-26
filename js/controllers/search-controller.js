@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('bgm-app')
-.controller('SearchController', function($scope, YouTubeSearchService, localStorageService){
+.controller('SearchController', function($scope, YouTubeSearchService, localStorageService, SendLikeService){
   var playingVideoNum = -1;
   var items = null;
   var favorites = JSON.parse(localStorageService.get("favorite"));
@@ -51,6 +51,8 @@ angular.module('bgm-app')
       localStorageService.set("favorite", JSON.stringify(favorites));
       alert("追加しました。");
     }
+
+    SendLikeService.send(item, null);
   };
 
   $scope.videoToggle = function(){

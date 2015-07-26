@@ -1,11 +1,22 @@
 'use strict'
 
 angular.module('bgm-app')
-.controller('FavoriteController', function($scope, localStorageService){
+.controller('FavoriteController', function($scope, SendLikeService, localStorageService){
   var playingVideoNum = -1;
   var favorites = JSON.parse(localStorageService.get("favorite"));
   if(favorites!=null)
     var favoriteSize = favorites.length;
+
+  var updated = localStorageService.get("updated");
+  if(updated==null&&favorites!=null&&favorites.length>0){
+    for(var i=0; i<favorites.length; i++){
+      SendLikeService.send(favorites[i], function(result){
+        if(result==true)
+          localStorageService.set("updated", 1);
+      });
+    }
+  }
+  
 
   if(favorites!=null&&favorites.length>0){
     $scope.items = favorites;

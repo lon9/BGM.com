@@ -27,6 +27,7 @@
     "fontawesome": "~4.3.0",
     "angular": "~1.4.1",
     "angular-youtube-mb": "~1.0.2",
-    "angulike": "~1.2.0"
+    "angulike": "~1.2.0",
+    "angular-base64": "~2.0.5"
   }
 }

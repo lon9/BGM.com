@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('bgm-app')
-.controller('RankingController', function($scope, $resource, iTunesRankingService, YouTubeSearchService, localStorageService){
+.controller('RankingController', function($scope, $resource, iTunesRankingService, YouTubeSearchService, localStorageService, SendLikeService){
   //初期化処理
   var playingVideoNum = -1;
   var genre = null;
@@ -83,6 +83,9 @@ angular.module('bgm-app')
         localStorageService.set("favorite", JSON.stringify(favorites));
         alert("追加しました。");
       }
+
+      //Send like.
+      SendLikeService.send(item, null);
     });
   };
 

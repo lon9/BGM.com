@@ -6,7 +6,7 @@ $(function(){
 
     var under = $('body').height() - (now+$(window).height());
 
-    if(now>1500 && under>200){
+    if(now>500 && under>200){
       $('#page-top').fadeIn('slow');
     }else{
       $('#page-top').fadeOut('slow');

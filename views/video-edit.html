@@ -1,0 +1,56 @@
+<div>
+  <h4>曲情報編集</h4>
+  <p>曲を編集するページ</p>
+</div>
+
+<div class="modal" role="dialog" aria-hidden="true" id="authModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>認証</h4>
+      </div>
+      <div class="modal-body">
+        <p>認証してください。</p>
+        <form>
+          <div class="form-group">
+            <label for="user" class="control-label">ユーザーID</label>
+            <input type="text" class="form-control" name="user" ng-model="user.userid">
+          </div>
+          <div class="form-group">
+            <label for="password" class="control-label">パスワード</label>
+            <input type="password" class="form-control" name="password" ng-model="user.password">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" ng-click="auth()" class="btn btn-primary">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div ng-show="showContent" class="dn-fade">
+  <div ng-include="'views/video.html'"></div>
+
+  <div class="table-responsive">
+    <table class="table table-hover table-striped table-bordered">
+      <tr><th>ID</th><th>Video ID</th><th>Title</th><th>Artist</th><th>Published date</th><th>Listen to music</th><th>Update</th><th>Delete</th></tr>
+      <tr ng-repeat="video in videos" class="list-group">
+        <td>{{video.id}}</td>
+        <td>{{video.videoId}}</td>
+        <td><input  ng-model="video.title"></td>
+        <td><input  ng-model="video.artist"></td>
+        <td><input  ng-model="video.publishedDate"></td>
+        <td><button ng-click="play(video)" class="btn btn-default">Play music</button></td>
+        <td><button ng-click="update(video)" class="btn btn-primary">Update</button></td>
+        <td><button ng-click="delete(video)" class="btn btn-danger">Delete</button></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="video-pager">
+    <ul class="pagination" ng-repeat="page in pages">
+      <li><a href="" ng-click="nextPage(page.number)">{{page.number}}</a></li>
+    </ul>
+  </div>
+</div>
