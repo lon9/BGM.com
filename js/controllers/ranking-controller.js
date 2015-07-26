@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('bgm-app')
-.controller('RankingController', function($scope, $resource, iTunesRankingService, YouTubeSearchService, localStorageService, SendLikeService){
+.controller('RankingController', function($scope, $resource, $analytics, iTunesRankingService, YouTubeSearchService, localStorageService, SendLikeService){
   //初期化処理
   var playingVideoNum = -1;
   var genre = null;
@@ -112,6 +112,10 @@ angular.module('bgm-app')
       return false;
   };
  
+  $scope.$on('youtube.player.ready', function($event, player){
+    $analytics.eventTrack('Play');
+  });
+
   $scope.$on('youtube.player.playing', function($event, player){
     $scope.playDisabled = true;
     $scope.pauseDisabled = false;
