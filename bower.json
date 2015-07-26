@@ -28,6 +28,7 @@
     "angular": "~1.4.1",
     "angular-youtube-mb": "~1.0.2",
     "angulike": "~1.2.0",
-    "angular-base64": "~2.0.5"
+    "angular-base64": "~2.0.5",
+    "angulartics": "~0.19.2"
   }
 }
