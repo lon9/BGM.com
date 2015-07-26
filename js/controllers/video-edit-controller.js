@@ -8,7 +8,13 @@ angular.module('bgm-app')
     $state.go('basicLogin');
   }
 
-  var Video = $resource('http://localhost:9000/video/:id', {id: '@id'}, 
+  var url = null;
+  if($location.host().indexOf('localhost')!=-1)
+    url = 'http://localhost:9000/video/:id';
+  else
+    url = 'https://bgm-server.herokuapp.com/video/:id';
+
+  var Video = $resource(url, {id: '@id'}, 
       {
         destroy: {
           method: 'DELETE',

@@ -85,7 +85,7 @@ angular.module('bgm-app')
 })
 
 //Send video to server and increment like count.
-.factory('SendLikeService', function($http, localStorageService){
+.factory('SendLikeService', function($http, $location, localStorageService){
   var send = function(video, listener){
     var data = {
       videoId: video.id.videoId,
@@ -129,7 +129,12 @@ angular.module('bgm-app')
     };
 
     function request(data){
-      return $http.post('http://localhost:9000/like', data)
+      var url = null;
+      if($location.host().indexOf('localhost')!=-1)
+        url = 'http://localhost:9000/like';
+      else
+        url = 'https://bgm-server.herokuapp.com/like';
+      return $http.post(url, data)
         .then(function(response){
           return response.status;
         });
@@ -147,9 +152,14 @@ angular.module('bgm-app')
 
 
 // Get videos.
-.factory('VideoIndexService', function($http){
+.factory('VideoIndexService', function($http, $location){
+  var url = null;
+  if($location.host().indexOf('localhost')!=-1)
+    url = 'http://localhost:9000/video';
+  else
+    url = 'https://bgm-server.herokuapp.com/video';
   var receive = function(params){
-    return $http.get('http://localhost:9000/video', {params: params})
+    return $http.get(url, {params: params})
       .then(function(response){
         return response.data;
       });
