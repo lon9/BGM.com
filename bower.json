@@ -32,7 +32,7 @@
     "angulartics": "0.18.0",
     "angulartics-google-analytics": "~0.1.0"
   },
-  "resolution": {
+  "resolutions": {
     "angular": "1.4.1"
   }
 }
