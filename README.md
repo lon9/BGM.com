@@ -1,12 +1,12 @@
-#BGM.com
+# BGM.com
 
 ![screen](https://github.com/rompei/BGM.com/blob/master/art/screenshot.png?raw=true)
 
-##Description 
+## Description 
 
 This is angularJS app.  BGM.com help your coding and everything. You can pick up the music you like and listen forever!!
 
-##functions
+## functions
 
 - Search a music from YouTube and listen to the music as BGM.
 
@@ -14,11 +14,11 @@ This is angularJS app.  BGM.com help your coding and everything. You can pick up
 
 - Add musics you liked to favorite.
 
-##Site url
+## Site url
 
 [BGM.com](https://bgm-com.herokuapp.com/#/BGM.com/)
 
-##Dependencies
+## Dependencies
 
 [AngularJS](https://github.com/angular/angular.js)
 
