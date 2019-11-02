@@ -4,11 +4,11 @@
   "private": true,
   "devDependencies": {
     "http-server": "^0.8.0",
-    "bower": "1.4.1", 
+    "bower": "1.8.8", 
     "express": "4.13.0"
   },
   "dependencies": {
-      "bower": "1.4.1",
+      "bower": "1.8.8",
       "express": "4.13.0"
   },
   "engine": {
